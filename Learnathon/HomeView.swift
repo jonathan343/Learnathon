@@ -48,6 +48,7 @@ struct HomeView: View {
                     WatchRingsView()
                         .padding(.horizontal, 30)
                         .padding(.bottom, 30)
+                        .padding(.top, 15)
                         .onTapGesture {
                             self.showContent = true
                     }
@@ -65,14 +66,14 @@ struct HomeView: View {
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 20) {
-                        ForEach(sectionData) { item in
+                        ForEach(sectionData1) { item in
                             GeometryReader { geometry in
                                 SectionView(section: item)
                                     .rotation3DEffect(Angle(degrees:
                                         Double(geometry.frame(in: .global).minX - 30) / -20
                                     ), axis: (x: 0, y: 10, z: 0))
                             }
-                            .frame(width: 275, height: 275)
+                            .frame(width: 250, height: 250)
                         }
                     }
                     .padding(30)
@@ -101,7 +102,7 @@ struct HomeView: View {
                                        Double(geometry.frame(in: .global).minX - 30) / -20
                                    ), axis: (x: 0, y: 10, z: 0))
                            }
-                           .frame(width: 275, height: 275)
+                           .frame(width: 250, height: 250)
                        }
                    }
                    .padding(30)
@@ -130,14 +131,18 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(showProfile: .constant(false), showContent: .constant(false))
+        ZStack {
+            Color(#colorLiteral(red: 0.1411764706, green: 0.2039215686, blue: 0.2784313725, alpha: 1))
+                .edgesIgnoringSafeArea(.all)
+            HomeView(showProfile: .constant(false), showContent: .constant(false))
+        }
     }
 }
 
 struct SectionView: View {
     var section: Section
-    var width: CGFloat = 275
-    var height: CGFloat = 275
+    var width: CGFloat = 250
+    var height: CGFloat = 250
     
     var body: some View {
         VStack {
@@ -151,19 +156,21 @@ struct SectionView: View {
             }
             
             Text(section.text.uppercased())
+                .font(.system(.body, design: .rounded))
+                .opacity(0.3)
                 .frame(maxWidth: .infinity, alignment: .leading)
             Spacer()
-//            section.image
-//                .resizable()
-//                .aspectRatio(contentMode: .fit)
-//                .frame(width: 210)
+            section.image
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 210)
         }
         .padding(.top, 20)
         .padding(.horizontal, 20)
         .frame(width: width, height: height)
         .background(section.color)
         .cornerRadius(30)
-        .shadow(color: section.color.opacity(0.3), radius: 20, x: 0, y: 20)
+        .shadow(color: section.color.opacity(0.3), radius: 15, x: 0, y: 20)
     }
 }
 
@@ -176,8 +183,8 @@ struct Section: Identifiable {
     var color: Color
 }
 
-let sectionData = [
-    Section(title: "Why Learn Python?", text: "Incomplete", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "Image1")), color: Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1))),
+let sectionData1 = [
+    Section(title: "Why Learn Python?", text: "Incomplete", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "section1_1")), color: Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1))),
     Section(title: "Printing to the Consol", text: "Incomplete", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "JAG_LOGO")), color: Color(#colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1))),
     Section(title: "Expressions", text: "Incomplete", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "Image1")), color: Color(#colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)))
 ]
@@ -194,49 +201,51 @@ let sectionData2 = [
 struct WatchRingsView: View {
     var body: some View {
         HStack(spacing: 20) {
-            HStack(spacing: 12.0) {
-                //RingView(color1: #colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1), color2: #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), width: 44, height: 44, percent: 68, show: .constant(true))
-                VStack(alignment: .leading, spacing: 4.0) {
-                    Text("Section 1").bold().modifier(FontModifier(style: .subheadline))
-                    Text("Python Fundamentals").modifier(FontModifier(style: .caption))
+            ForEach(Sections, id: \.id) { section in
+                HStack(spacing: 12.0) {
+                    
+                    VStack( spacing: 4.0) {
+//                        Text("Section \(section.number)")
+//                            .bold()
+//                            .modifier(FontModifier(style: .subheadline))
+                        Text("\(section.name)")
+                            .bold()
+                            .modifier(FontModifier(style: .subheadline))
+                    }
+                    .foregroundColor(Color.white)
+                    .modifier(FontModifier())
+                    
                 }
-                .foregroundColor(Color.white)
-                .modifier(FontModifier())
+                //.frame(width:125,height: 20)
+                .padding(8)
+                .padding(.leading,4)
+                .background(section.color)
+                .cornerRadius(10)
+                .shadow(color: Color.black.opacity(0.3), radius: 8, x: 0, y: 0.0)
+                .modifier(ShadowModifier())
+                
             }
-            .padding(8)
-            .background(Color(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)))
-            .cornerRadius(20)
-            .modifier(ShadowModifier())
-            
-            HStack(spacing: 12.0) {
-                //RingView(color1: #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), color2: #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1), width: 44, height: 44, percent: 68, show: .constant(true))
-                VStack(alignment: .leading, spacing: 4.0) {
-                    Text("Section 2").bold().modifier(FontModifier(style: .subheadline))
-                    Text("Data Types/Variables").modifier(FontModifier(style: .caption))
-                }
-                .foregroundColor(Color.white)
-                .modifier(FontModifier())
-            }
-            .padding(8)
-            .background(Color(#colorLiteral(red: 0.1411764706, green: 0.2039215686, blue: 0.2784313725, alpha: 1)))
-            .cornerRadius(20)
-            .modifier(ShadowModifier())
-            
-            HStack(spacing: 12.0) {
-                //RingView(color1: #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1), color2: #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1), width: 44, height: 44, percent: 68, show: .constant(true))
-                VStack(alignment: .leading, spacing: 4.0) {
-                    Text("Section 3").bold().modifier(FontModifier(style: .subheadline))
-                    Text("Conditionals/Logic").modifier(FontModifier(style: .caption))
-                }
-                .foregroundColor(Color.white)
-                .modifier(FontModifier())
-            }
-            .padding(8)
-            .background(Color(#colorLiteral(red: 0.1411764706, green: 0.2039215686, blue: 0.2784313725, alpha: 1)))
-            .cornerRadius(20)
-            .modifier(ShadowModifier())
-            
             
         }
     }
 }
+
+
+struct SectionInfo:Identifiable{
+    var id = UUID()
+    var number:Int
+    var name:String
+    var color:Color
+    var sectionData:[Section]
+}
+
+let Sections = [
+    SectionInfo(number: 1, name: "Fundamentals",
+                color: Color(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)), sectionData: sectionData1),
+    SectionInfo(number: 2, name: "Data Types",
+                color: Color(#colorLiteral(red: 0.1411764706, green: 0.2039215686, blue: 0.2784313725, alpha: 1)), sectionData: sectionData2),
+    SectionInfo(number: 3, name: "Conditionals",
+                color: Color(#colorLiteral(red: 0.1411764706, green: 0.2039215686, blue: 0.2784313725, alpha: 1)), sectionData: sectionData1),
+    SectionInfo(number: 4, name: "Lists",
+                color: Color(#colorLiteral(red: 0.1411764706, green: 0.2039215686, blue: 0.2784313725, alpha: 1)), sectionData: sectionData2)
+]
