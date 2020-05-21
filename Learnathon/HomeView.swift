@@ -49,9 +49,9 @@ struct HomeView: View {
                         .padding(.horizontal, 30)
                         .padding(.bottom, 30)
                         .padding(.top, 15)
-                        .onTapGesture {
-                            self.showContent = true
-                    }
+//                        .onTapGesture {
+//                            self.showContent = true
+//                    }
                 }
                 
                 HStack {
@@ -254,6 +254,7 @@ struct SectionsListElement: View {
         .onTapGesture {
             self.activeIndex = self.index
         }
+        .animation(.none)
     }
 }
 
