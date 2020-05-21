@@ -45,7 +45,7 @@ struct HomeView: View {
                 .padding(.top, 30)
                 
                 ScrollView(.horizontal, showsIndicators: false) {
-                    WatchRingsView()
+                    SectionsList()
                         .padding(.horizontal, 30)
                         .padding(.bottom, 30)
                         .padding(.top, 15)
@@ -134,7 +134,8 @@ struct HomeView_Previews: PreviewProvider {
         ZStack {
             Color(#colorLiteral(red: 0.1411764706, green: 0.2039215686, blue: 0.2784313725, alpha: 1))
                 .edgesIgnoringSafeArea(.all)
-            HomeView(showProfile: .constant(false), showContent: .constant(false))
+                HomeView(showProfile: .constant(false), showContent: .constant(false))
+//            SectionsListElement(section: Sections[0])
         }
     }
 }
@@ -163,7 +164,7 @@ struct SectionView: View {
             section.image
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 210)
+                .frame(width: 210,height:140)
         }
         .padding(.top, 20)
         .padding(.horizontal, 20)
@@ -198,31 +199,29 @@ let sectionData2 = [
 
 
 
-struct WatchRingsView: View {
+struct SectionsList: View {
+    @State var sections = Sections
+    @State var activeIndex = 0
     var body: some View {
         HStack(spacing: 20) {
-            ForEach(Sections, id: \.id) { section in
+            ForEach(sections.indices, id: \.self) { index in
                 HStack(spacing: 12.0) {
                     
-                    VStack( spacing: 4.0) {
-//                        Text("Section \(section.number)")
-//                            .bold()
-//                            .modifier(FontModifier(style: .subheadline))
-                        Text("\(section.name)")
-                            .bold()
-                            .modifier(FontModifier(style: .subheadline))
-                    }
-                    .foregroundColor(Color.white)
-                    .modifier(FontModifier())
+                    SectionsListElement(
+                        section: self.sections[index],
+                        active: self.$sections[index].active,
+                        index:index,
+                        activeIndex: self.$activeIndex)
                     
                 }
                 //.frame(width:125,height: 20)
-                .padding(8)
-                .padding(.leading,4)
-                .background(section.color)
-                .cornerRadius(10)
-                .shadow(color: Color.black.opacity(0.3), radius: 8, x: 0, y: 0.0)
-                .modifier(ShadowModifier())
+//                .padding(8)
+//                .padding(.leading,4)
+                //.background(section.active ? Color(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)):Color(#colorLiteral(red: 0.1411764706, green: 0.2039215686, blue: 0.2784313725, alpha: 1)))
+//                .cornerRadius(10)
+//                .shadow(color: Color.black.opacity(0.3), radius: 8, x: 0, y: 0.0)
+                //.modifier(ShadowModifier())
+
                 
             }
             
@@ -230,22 +229,51 @@ struct WatchRingsView: View {
     }
 }
 
+struct SectionsListElement: View {
+    var section:SectionInfo
+    @Binding var active: Bool
+    var index: Int
+    @Binding var activeIndex: Int
+
+    var body: some View {
+        VStack( spacing: 4.0) {
+//            Text("Section \(section.number)")
+//                .bold()
+//                .modifier(FontModifier(style: .subheadline))
+            Text("\(section.name)")
+                .bold()
+                .modifier(FontModifier(style: .subheadline))
+        }
+        .padding(8)
+        .padding(.leading,4)
+        .foregroundColor(Color.white)
+        .modifier(FontModifier())
+        .background(self.index == self.activeIndex ? Color(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)):Color(#colorLiteral(red: 0.1411764706, green: 0.2039215686, blue: 0.2784313725, alpha: 1)))
+        .cornerRadius(10)
+        .shadow(color: Color.black.opacity(0.3), radius: 8, x: 0, y: 0.0)
+        .onTapGesture {
+            self.activeIndex = self.index
+        }
+    }
+}
+
+
 
 struct SectionInfo:Identifiable{
     var id = UUID()
     var number:Int
     var name:String
-    var color:Color
     var sectionData:[Section]
+    var active = false
 }
 
 let Sections = [
     SectionInfo(number: 1, name: "Fundamentals",
-                color: Color(#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)), sectionData: sectionData1),
+                sectionData: sectionData1, active: true),
     SectionInfo(number: 2, name: "Data Types",
-                color: Color(#colorLiteral(red: 0.1411764706, green: 0.2039215686, blue: 0.2784313725, alpha: 1)), sectionData: sectionData2),
+                sectionData: sectionData2, active: false),
     SectionInfo(number: 3, name: "Conditionals",
-                color: Color(#colorLiteral(red: 0.1411764706, green: 0.2039215686, blue: 0.2784313725, alpha: 1)), sectionData: sectionData1),
+                sectionData: sectionData1, active: false),
     SectionInfo(number: 4, name: "Lists",
-                color: Color(#colorLiteral(red: 0.1411764706, green: 0.2039215686, blue: 0.2784313725, alpha: 1)), sectionData: sectionData2)
+                sectionData: sectionData2, active: false)
 ]
