@@ -37,6 +37,7 @@ struct RingView: View {
                 .shadow(color: Color(color2).opacity(0.1), radius: 3 * multiplier, x: 0, y: 3 * multiplier)
             
             Text("\(Int(percent))%")
+                .foregroundColor(Color.white)
                 .font(.system(size: 14 * multiplier))
                 .fontWeight(.bold)
                 .onTapGesture {
@@ -48,6 +49,9 @@ struct RingView: View {
 
 struct RingView_Previews: PreviewProvider {
     static var previews: some View {
-        RingView(show: .constant(true))
+        ZStack {
+            Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1))
+            RingView(show: .constant(true))
+        }
     }
 }

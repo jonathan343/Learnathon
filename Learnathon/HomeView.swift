@@ -12,6 +12,7 @@ struct HomeView: View {
     @Binding var showProfile: Bool
     @State var showUpdate = false
     @Binding var showContent: Bool
+    @State var activeIndex = 0
     
     var body: some View {
         ScrollView {
@@ -45,7 +46,7 @@ struct HomeView: View {
                 .padding(.top, 30)
                 
                 ScrollView(.horizontal, showsIndicators: false) {
-                    SectionsList()
+                    SectionsList(activeIndex: self.$activeIndex)
                         .padding(.horizontal, 30)
                         .padding(.bottom, 30)
                         .padding(.top, 15)
@@ -66,7 +67,7 @@ struct HomeView: View {
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 20) {
-                        ForEach(sectionData1) { item in
+                        ForEach(Sections[activeIndex].LessonData) { item in
                             GeometryReader { geometry in
                                 SectionView(section: item)
                                     .rotation3DEffect(Angle(degrees:
@@ -95,7 +96,7 @@ struct HomeView: View {
 //                .offset(y: -60)
                 ScrollView(.horizontal, showsIndicators: false) {
                    HStack(spacing: 20) {
-                       ForEach(sectionData2) { item in
+                       ForEach(Sections[activeIndex].KnowledgeData) { item in
                            GeometryReader { geometry in
                                SectionView(section: item)
                                    .rotation3DEffect(Angle(degrees:
@@ -164,7 +165,7 @@ struct SectionView: View {
             section.image
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 210,height:140)
+                .frame(width: 210,height:130)
         }
         .padding(.top, 20)
         .padding(.horizontal, 20)
@@ -172,6 +173,9 @@ struct SectionView: View {
         .background(section.color)
         .cornerRadius(30)
         .shadow(color: section.color.opacity(0.3), radius: 15, x: 0, y: 20)
+        .onTapGesture {
+            print("Hello")
+        }
     }
 }
 
@@ -184,24 +188,35 @@ struct Section: Identifiable {
     var color: Color
 }
 
-let sectionData1 = [
+let section1Data1 = [
     Section(title: "Why Learn Python?", text: "Incomplete", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "section1_1")), color: Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1))),
     Section(title: "Printing to the Consol", text: "Incomplete", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "JAG_LOGO")), color: Color(#colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1))),
     Section(title: "Expressions", text: "Incomplete", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "Image1")), color: Color(#colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)))
 ]
 
-let sectionData2 = [
-    Section(title: "Integers", text: "Incomplete", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "section1_q1")), color: Color(#colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1))),
+let section1Data2 = [
+    Section(title: "Printing Challenge", text: "Incomplete", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "section1_q1")), color: Color(#colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1))),
+    Section(title: "Physics Problem", text: "Incomplete", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "JAG_LOGO")), color: Color(#colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1))),
+    Section(title: "Section Quiz", text: "Incomplete", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "Image1")), color: Color(#colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)))
+]
+
+let section2Data1 = [
+    Section(title: "Integers", text: "Incomplete", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "section1_1")), color: Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1))),
     Section(title: "Floating Point & Error", text: "Incomplete", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "JAG_LOGO")), color: Color(#colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1))),
     Section(title: "Character", text: "Incomplete", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "Image1")), color: Color(#colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)))
 ]
 
+let section2Data2 = [
+    Section(title: "Printing Challenge", text: "Incomplete", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "section1_q1")), color: Color(#colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1))),
+    Section(title: "Physics Problem", text: "Incomplete", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "JAG_LOGO")), color: Color(#colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1))),
+    Section(title: "Section Quiz", text: "Incomplete", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "Image1")), color: Color(#colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)))
+]
 
 
 
 struct SectionsList: View {
     @State var sections = Sections
-    @State var activeIndex = 0
+    @Binding var activeIndex: Int
     var body: some View {
         HStack(spacing: 20) {
             ForEach(sections.indices, id: \.self) { index in
@@ -259,22 +274,23 @@ struct SectionsListElement: View {
 }
 
 
-
 struct SectionInfo:Identifiable{
     var id = UUID()
     var number:Int
     var name:String
-    var sectionData:[Section]
+    var LessonData:[Section]
+    var KnowledgeData:[Section]
     var active = false
+    var progress:Int
 }
 
 let Sections = [
     SectionInfo(number: 1, name: "Fundamentals",
-                sectionData: sectionData1, active: true),
+                LessonData: section1Data1, KnowledgeData: section1Data2, active: true, progress: 54),
     SectionInfo(number: 2, name: "Data Types",
-                sectionData: sectionData2, active: false),
+                LessonData: section2Data1,KnowledgeData: section2Data2, active: false, progress: 0),
     SectionInfo(number: 3, name: "Conditionals",
-                sectionData: sectionData1, active: false),
+                LessonData: section1Data1,KnowledgeData: section1Data2, active: false, progress: 0),
     SectionInfo(number: 4, name: "Lists",
-                sectionData: sectionData2, active: false)
+                LessonData: section2Data1,KnowledgeData: section2Data2, active: false, progress: 0)
 ]

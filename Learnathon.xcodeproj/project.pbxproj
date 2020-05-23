@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E86A48D24790BFF00384448 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86A48C24790BFF00384448 /* QuizView.swift */; };
 		5EE3CB52246D3980007C23B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE3CB51246D3980007C23B8 /* AppDelegate.swift */; };
 		5EE3CB54246D3980007C23B8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE3CB53246D3980007C23B8 /* SceneDelegate.swift */; };
 		5EE3CB56246D3980007C23B8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE3CB55246D3980007C23B8 /* ContentView.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E86A48C24790BFF00384448 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		5EE3CB4E246D3980007C23B8 /* Learnathon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Learnathon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EE3CB51246D3980007C23B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EE3CB53246D3980007C23B8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				5EE3CB5C246D3986007C23B8 /* LaunchScreen.storyboard */,
 				5EE3CB5F246D3986007C23B8 /* Info.plist */,
 				5EE3CB59246D3986007C23B8 /* Preview Content */,
+				5E86A48C24790BFF00384448 /* QuizView.swift */,
 			);
 			path = Learnathon;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 			files = (
 				5EE3CB52246D3980007C23B8 /* AppDelegate.swift in Sources */,
 				5EE3CB6A246D44B7007C23B8 /* MenuView.swift in Sources */,
+				5E86A48D24790BFF00384448 /* QuizView.swift in Sources */,
 				5EE3CB54246D3980007C23B8 /* SceneDelegate.swift in Sources */,
 				5EE3CB66246D419C007C23B8 /* Home.swift in Sources */,
 				5EE3CB6E246D4CED007C23B8 /* Modifiers.swift in Sources */,
