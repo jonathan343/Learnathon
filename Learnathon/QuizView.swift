@@ -12,9 +12,27 @@ struct QuizView: View {
     var body: some View {
         //Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
         ZStack {
-            Color(#colorLiteral(red: 0.1411764706, green: 0.2039215686, blue: 0.2784313725, alpha: 1))
+//                Color(#colorLiteral(red: 0.1411764706, green: 0.2039215686, blue: 0.2784313725, alpha: 1))
+//                    .edgesIgnoringSafeArea(.all)
+            LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.1411764706, green: 0.2039215686, blue: 0.2784313725, alpha: 1)), Color(#colorLiteral(red: 0.1020417781, green: 0.1484055788, blue: 0.2053428573, alpha: 1))]), startPoint: .topLeading, endPoint: .bottomTrailing)
                 .edgesIgnoringSafeArea(.all)
             VStack(spacing: 15){
+                HStack{
+                    Spacer()
+                    Image(systemName: "xmark")
+                        .renderingMode(.original)
+                        .font(.system(size: 16, weight: .medium))
+                        .frame(width: 36, height: 36)
+                        .background(Color.white)
+                        .clipShape(Circle())
+                        .shadow(color: Color.black.opacity(0.1), radius: 1, x: 0, y: 1)
+                        .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 10)
+                    
+                }
+                .padding(.horizontal)
+                .padding(.leading, 14)
+                .padding(.top, 30)
+                
                 Text("Which of the following is not a data type in Python?")
                     .foregroundColor(Color.white)
                     .font(.system(size: 28, weight: .semibold))
@@ -22,7 +40,15 @@ struct QuizView: View {
                     .frame(height: 200)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal,50)
-
+                Image("section1_q1")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .cornerRadius(10)
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal,20)
+                    .frame(height: 200)
+                    .offset(y: -30)
+                    
                 Spacer()
                 HStack {
                     Text("Float")
@@ -33,7 +59,7 @@ struct QuizView: View {
                 .cornerRadius(10)
                 .shadow(color: Color.black.opacity(0.1), radius: 1, x: 0, y: 1)
                 .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 10)
-                
+                .offset(y: -30)
                 HStack {
                     Text("Integer")
                         .foregroundColor(Color.white)
@@ -43,7 +69,7 @@ struct QuizView: View {
                 .cornerRadius(10)
                 .shadow(color: Color.black.opacity(0.1), radius: 1, x: 0, y: 1)
                 .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 10)
-                
+                .offset(y: -30)
                 HStack {
                     Text("Boolean")
                         .foregroundColor(Color.white)
@@ -53,7 +79,7 @@ struct QuizView: View {
                 .cornerRadius(10)
                 .shadow(color: Color.black.opacity(0.1), radius: 1, x: 0, y: 1)
                 .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 10)
-                
+                .offset(y: -30)
                 HStack {
                     Text("Double")
                         .foregroundColor(Color.white)
@@ -63,13 +89,15 @@ struct QuizView: View {
                 .cornerRadius(10)
                 .shadow(color: Color.black.opacity(0.1), radius: 1, x: 0, y: 1)
                 .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 10)
+                .offset(y: -30)
                 HStack {
                     Text("Submit")
                         .foregroundColor(Color.white)
+                        .offset(x: 17)
                     Image(systemName: "chevron.up.circle")
                         .foregroundColor(Color.white)
                         .font(.system(size: 25, weight: .regular))
-                        //.offset(x: 100)
+                        .offset(x: 100)
                     
                 }
                 .frame(width: 350, height: 60, alignment: .center)
@@ -77,6 +105,7 @@ struct QuizView: View {
                 .cornerRadius(10)
                 .shadow(color: Color.black.opacity(0.1), radius: 1, x: 0, y: 1)
                 .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 10)
+                .offset(y: -30)
             }
         }
     }
