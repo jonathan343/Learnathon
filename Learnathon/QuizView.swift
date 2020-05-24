@@ -1,14 +1,15 @@
-//
+////
 //  QuizView.swift
 //  Learnathon
 //
 //  Created by Jonathan Gaytan on 5/23/20.
 //  Copyright © 2020 Jonathan Gaytan. All rights reserved.
 //
-
 import SwiftUI
 
 struct QuizView: View {
+    var quiz:Quiz
+    
     var body: some View {
         //Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
         ZStack {
@@ -33,14 +34,14 @@ struct QuizView: View {
                 .padding(.leading, 14)
                 .padding(.top, 30)
                 
-                Text("Which of the following is not a data type in Python?")
+                Text("\(quiz.question)")
                     .foregroundColor(Color.white)
                     .font(.system(size: 28, weight: .semibold))
                     .frame(maxWidth: .infinity)
                     .frame(height: 200)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal,50)
-                Image("section1_q1")
+                quiz.image
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .cornerRadius(10)
@@ -113,6 +114,16 @@ struct QuizView: View {
 
 struct QuizView_Previews: PreviewProvider {
     static var previews: some View {
-        QuizView()
+        QuizView(quiz: Quiz(question: "Which of the following is not a data type in Python?", image: Image(uiImage:#imageLiteral(resourceName: "section1_q1")), answerChoices: ["Float","Integer","Boolean","Double"], correctIndex: 3))
     }
 }
+
+
+struct Quiz{
+    var question:String
+    var image:Image
+    var answerChoices:[String]
+    var correctIndex:Int
+}
+
+
