@@ -85,11 +85,10 @@ struct Home: View {
                 
                 ZStack {
                     Color(#colorLiteral(red: 0.1411764706, green: 0.2039215686, blue: 0.2784313725, alpha: 1))
-                        .offset(y: 100)
                     QuizView(quiz: Quiz(question: "Which of the following is not a data type in Python?", image: Image(uiImage:#imageLiteral(resourceName: "section1_q1")), answerChoices: ["Float","Integer","Boolean","Double"], correctIndex: 3), showQuiz: $showQuiz)
                 }
                 .transition(.move(edge: .bottom))
-                .animation(.spring(response: 0.6, dampingFraction: 0.8, blendDuration: 0))
+                .animation(.linear)
             }
             
         }
