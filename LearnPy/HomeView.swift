@@ -13,12 +13,13 @@ struct HomeView: View {
     @State var showUpdate = false
     @Binding var showContent: Bool
     @State var activeIndex = 0
+    @Binding var showQuiz: Bool
     
     var body: some View {
         ScrollView {
             VStack {
                 HStack(spacing: 12) {
-                    Text("Learnathon")
+                    Text("LearnPy")
                         .font(.system(size: 28, weight: .bold))
                         .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
                         //.modifier(CustomFontModifier(size: 28))
@@ -67,7 +68,10 @@ struct HomeView: View {
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 20) {
+
                         ForEach(Sections[activeIndex].LessonData) { item in
+                            
+                            
                             GeometryReader { geometry in
                                 SectionView(section: item)
                                     .rotation3DEffect(Angle(degrees:
@@ -102,8 +106,11 @@ struct HomeView: View {
                                    .rotation3DEffect(Angle(degrees:
                                        Double(geometry.frame(in: .global).minX - 30) / -20
                                    ), axis: (x: 0, y: 10, z: 0))
-                           }
+                            }
                            .frame(width: 250, height: 250)
+                            .onTapGesture {
+                                self.showQuiz = true
+                            }
                        }
                    }
                    .padding(30)
@@ -135,7 +142,7 @@ struct HomeView_Previews: PreviewProvider {
         ZStack {
             Color(#colorLiteral(red: 0.1411764706, green: 0.2039215686, blue: 0.2784313725, alpha: 1))
                 .edgesIgnoringSafeArea(.all)
-                HomeView(showProfile: .constant(false), showContent: .constant(false))
+            HomeView(showProfile: .constant(false), showContent: .constant(false), showQuiz: .constant(false))
 //            SectionsListElement(section: Sections[0])
         }
     }
@@ -173,9 +180,6 @@ struct SectionView: View {
         .background(section.color)
         .cornerRadius(30)
         .shadow(color: section.color.opacity(0.3), radius: 15, x: 0, y: 20)
-        .onTapGesture {
-            print("Hello")
-        }
     }
 }
 
@@ -190,13 +194,13 @@ struct Section: Identifiable {
 
 let section1Data1 = [
     Section(title: "Why Learn Python?", text: "Incomplete", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "section1_1")), color: Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1))),
-    Section(title: "Printing to the Consol", text: "Incomplete", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "JAG_LOGO")), color: Color(#colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1))),
+    Section(title: "Printing to the Consol", text: "Incomplete", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "Launch_Image")), color: Color(#colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1))),
     Section(title: "Expressions", text: "Incomplete", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "Image1")), color: Color(#colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)))
 ]
 
 let section1Data2 = [
     Section(title: "Printing Challenge", text: "Incomplete", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "section1_q1")), color: Color(#colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1))),
-    Section(title: "Physics Problem", text: "Incomplete", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "JAG_LOGO")), color: Color(#colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1))),
+    Section(title: "Physics Problem", text: "Incomplete", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "Launch_Image")), color: Color(#colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1))),
     Section(title: "Section Quiz", text: "Incomplete", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "Image1")), color: Color(#colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)))
 ]
 

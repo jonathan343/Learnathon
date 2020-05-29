@@ -12,13 +12,14 @@ struct Home: View {
     @State var showProfile = false
     @State var viewState = CGSize.zero
     @State var showContent = false
+    @State var showQuiz = false
     
     var body: some View {
         ZStack {
             Color(#colorLiteral(red: 0.1411764706, green: 0.2039215686, blue: 0.2784313725, alpha: 1))
                 .edgesIgnoringSafeArea(.all)
             
-            HomeView(showProfile: $showProfile, showContent: $showContent)
+            HomeView(showProfile: $showProfile, showContent: $showContent, showQuiz: $showQuiz)
                 .padding(.top, 44)
                 .background(
                     VStack {
@@ -33,7 +34,6 @@ struct Home: View {
                 .offset(y: showProfile ? -450 : 0)
                 .rotation3DEffect(Angle(degrees: showProfile ? Double(viewState.height / 10) - 10 : 0), axis: (x: 10.0, y: 0, z: 0))
                 .scaleEffect(showProfile ? 0.9 : 1)
-                .animation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0))
                 .edgesIgnoringSafeArea(.all)
             
             MenuView()
@@ -80,6 +80,18 @@ struct Home: View {
                     self.showContent = false
                 }
             }
+            
+            if showQuiz{
+                
+                ZStack {
+                    Color(#colorLiteral(red: 0.1411764706, green: 0.2039215686, blue: 0.2784313725, alpha: 1))
+                        .offset(y: 100)
+                    QuizView(quiz: Quiz(question: "Which of the following is not a data type in Python?", image: Image(uiImage:#imageLiteral(resourceName: "section1_q1")), answerChoices: ["Float","Integer","Boolean","Double"], correctIndex: 3), showQuiz: $showQuiz)
+                }
+                .transition(.move(edge: .bottom))
+                .animation(.spring(response: 0.6, dampingFraction: 0.8, blendDuration: 0))
+            }
+            
         }
     }
 }

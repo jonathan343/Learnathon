@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E10D63A247B0D1600D2B2B8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5E10D639247B0D1600D2B2B8 /* Default-568h@2x.png */; };
 		5E86A48D24790BFF00384448 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E86A48C24790BFF00384448 /* QuizView.swift */; };
 		5EE3CB52246D3980007C23B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE3CB51246D3980007C23B8 /* AppDelegate.swift */; };
 		5EE3CB54246D3980007C23B8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE3CB53246D3980007C23B8 /* SceneDelegate.swift */; };
@@ -22,8 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5E10D639247B0D1600D2B2B8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		5E86A48C24790BFF00384448 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
-		5EE3CB4E246D3980007C23B8 /* Learnathon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Learnathon.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5EE3CB4E246D3980007C23B8 /* LearnPy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LearnPy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EE3CB51246D3980007C23B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EE3CB53246D3980007C23B8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5EE3CB55246D3980007C23B8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -52,7 +54,8 @@
 		5EE3CB45246D3980007C23B8 = {
 			isa = PBXGroup;
 			children = (
-				5EE3CB50246D3980007C23B8 /* Learnathon */,
+				5E10D639247B0D1600D2B2B8 /* Default-568h@2x.png */,
+				5EE3CB50246D3980007C23B8 /* LearnPy */,
 				5EE3CB4F246D3980007C23B8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -60,12 +63,12 @@
 		5EE3CB4F246D3980007C23B8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5EE3CB4E246D3980007C23B8 /* Learnathon.app */,
+				5EE3CB4E246D3980007C23B8 /* LearnPy.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5EE3CB50246D3980007C23B8 /* Learnathon */ = {
+		5EE3CB50246D3980007C23B8 /* LearnPy */ = {
 			isa = PBXGroup;
 			children = (
 				5EE3CB51246D3980007C23B8 /* AppDelegate.swift */,
@@ -76,13 +79,13 @@
 				5EE3CB6D246D4CED007C23B8 /* Modifiers.swift */,
 				5EE3CB67246D443D007C23B8 /* HomeView.swift */,
 				5EE3CB6B246D4C5A007C23B8 /* RingView.swift */,
+				5E86A48C24790BFF00384448 /* QuizView.swift */,
 				5EE3CB57246D3986007C23B8 /* Assets.xcassets */,
 				5EE3CB5C246D3986007C23B8 /* LaunchScreen.storyboard */,
 				5EE3CB5F246D3986007C23B8 /* Info.plist */,
 				5EE3CB59246D3986007C23B8 /* Preview Content */,
-				5E86A48C24790BFF00384448 /* QuizView.swift */,
 			);
-			path = Learnathon;
+			path = LearnPy;
 			sourceTree = "<group>";
 		};
 		5EE3CB59246D3986007C23B8 /* Preview Content */ = {
@@ -96,9 +99,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5EE3CB4D246D3980007C23B8 /* Learnathon */ = {
+		5EE3CB4D246D3980007C23B8 /* LearnPy */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5EE3CB62246D3986007C23B8 /* Build configuration list for PBXNativeTarget "Learnathon" */;
+			buildConfigurationList = 5EE3CB62246D3986007C23B8 /* Build configuration list for PBXNativeTarget "LearnPy" */;
 			buildPhases = (
 				5EE3CB4A246D3980007C23B8 /* Sources */,
 				5EE3CB4B246D3980007C23B8 /* Frameworks */,
@@ -108,9 +111,9 @@
 			);
 			dependencies = (
 			);
-			name = Learnathon;
+			name = LearnPy;
 			productName = Learnathon;
-			productReference = 5EE3CB4E246D3980007C23B8 /* Learnathon.app */;
+			productReference = 5EE3CB4E246D3980007C23B8 /* LearnPy.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -128,7 +131,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5EE3CB49246D3980007C23B8 /* Build configuration list for PBXProject "Learnathon" */;
+			buildConfigurationList = 5EE3CB49246D3980007C23B8 /* Build configuration list for PBXProject "LearnPy" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -141,7 +144,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5EE3CB4D246D3980007C23B8 /* Learnathon */,
+				5EE3CB4D246D3980007C23B8 /* LearnPy */,
 			);
 		};
 /* End PBXProject section */
@@ -152,6 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EE3CB5E246D3986007C23B8 /* LaunchScreen.storyboard in Resources */,
+				5E10D63A247B0D1600D2B2B8 /* Default-568h@2x.png in Resources */,
 				5EE3CB5B246D3986007C23B8 /* Preview Assets.xcassets in Resources */,
 				5EE3CB58246D3986007C23B8 /* Assets.xcassets in Resources */,
 			);
@@ -309,16 +313,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Learnathon/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"LearnPy/Preview Content\"";
 				DEVELOPMENT_TEAM = UAZ65UPZR4;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Learnathon/Info.plist;
+				INFOPLIST_FILE = LearnPy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Jonathan.Learnathon;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = Jonathan.LearnPy;
+				PRODUCT_NAME = LearnPy;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -329,16 +333,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Learnathon/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"LearnPy/Preview Content\"";
 				DEVELOPMENT_TEAM = UAZ65UPZR4;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Learnathon/Info.plist;
+				INFOPLIST_FILE = LearnPy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Jonathan.Learnathon;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = Jonathan.LearnPy;
+				PRODUCT_NAME = LearnPy;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -347,7 +351,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5EE3CB49246D3980007C23B8 /* Build configuration list for PBXProject "Learnathon" */ = {
+		5EE3CB49246D3980007C23B8 /* Build configuration list for PBXProject "LearnPy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5EE3CB60246D3986007C23B8 /* Debug */,
@@ -356,7 +360,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5EE3CB62246D3986007C23B8 /* Build configuration list for PBXNativeTarget "Learnathon" */ = {
+		5EE3CB62246D3986007C23B8 /* Build configuration list for PBXNativeTarget "LearnPy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5EE3CB63246D3986007C23B8 /* Debug */,

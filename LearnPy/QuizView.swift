@@ -9,9 +9,9 @@ import SwiftUI
 
 struct QuizView: View {
     var quiz:Quiz
+    @Binding var showQuiz: Bool
     
     var body: some View {
-        //Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
         ZStack {
 //                Color(#colorLiteral(red: 0.1411764706, green: 0.2039215686, blue: 0.2784313725, alpha: 1))
 //                    .edgesIgnoringSafeArea(.all)
@@ -28,6 +28,11 @@ struct QuizView: View {
                         .clipShape(Circle())
                         .shadow(color: Color.black.opacity(0.1), radius: 1, x: 0, y: 1)
                         .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 10)
+                        //.transition(.move(edge: .top))
+//                        .animation(.easeOut)
+                        .onTapGesture {
+                            self.showQuiz = false
+                    }
                     
                 }
                 .padding(.horizontal)
@@ -114,7 +119,7 @@ struct QuizView: View {
 
 struct QuizView_Previews: PreviewProvider {
     static var previews: some View {
-        QuizView(quiz: Quiz(question: "Which of the following is not a data type in Python?", image: Image(uiImage:#imageLiteral(resourceName: "section1_q1")), answerChoices: ["Float","Integer","Boolean","Double"], correctIndex: 3))
+        QuizView(quiz: Quiz(question: "Which of the following is not a data type in Python?", image: Image(uiImage:#imageLiteral(resourceName: "section1_q1")), answerChoices: ["Float","Integer","Boolean","Double"], correctIndex: 3), showQuiz: .constant(false))
     }
 }
 
