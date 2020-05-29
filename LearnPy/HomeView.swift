@@ -128,7 +128,7 @@ struct HomeView: View {
                 .padding(.leading, 30)
                 .offset(y: -120)
                 
-                RingView(color1: #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), color2: #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1), width: 200, height: 200, percent: 54, show: .constant(true))
+                RingView(color1: #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), color2: #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1), width: 200, height: 200, percent: Sections[activeIndex].progress, show: .constant(true))
                     .offset(y:-60)
                 
                 Spacer()
@@ -285,16 +285,16 @@ struct SectionInfo:Identifiable{
     var LessonData:[Section]
     var KnowledgeData:[Section]
     var active = false
-    var progress:Int
+    var progress:CGFloat
 }
 
 let Sections = [
     SectionInfo(number: 1, name: "Fundamentals",
-                LessonData: section1Data1, KnowledgeData: section1Data2, active: true, progress: 54),
+                LessonData: section1Data1, KnowledgeData: section1Data2, active: true, progress: 23),
     SectionInfo(number: 2, name: "Data Types",
-                LessonData: section2Data1,KnowledgeData: section2Data2, active: false, progress: 0),
+                LessonData: section2Data1,KnowledgeData: section2Data2, active: false, progress: 15),
     SectionInfo(number: 3, name: "Conditionals",
-                LessonData: section1Data1,KnowledgeData: section1Data2, active: false, progress: 0),
+                LessonData: section1Data1,KnowledgeData: section1Data2, active: false, progress: 35),
     SectionInfo(number: 4, name: "Lists",
-                LessonData: section2Data1,KnowledgeData: section2Data2, active: false, progress: 0)
+                LessonData: section2Data1,KnowledgeData: section2Data2, active: false, progress: 100)
 ]
